@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 
+import Loading from "./components/Loading"
 import Table from './components/Table'
 
 
@@ -29,11 +30,11 @@ const Persons = () => {
             .finally(() => setIsLoading(false))
     }, [])
 
-    if (isLoading) return <div>Loading..</div>
+    if (isLoading) return <Loading></Loading>
     return (
         <Table
             results={data}
-            title={"Persons"}
+            title={"Personas"}
             subNameKey={"gender"}
             createdKey={"created"}
         ></Table>

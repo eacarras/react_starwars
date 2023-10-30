@@ -33,7 +33,7 @@ const Starships = () => {
     return (
         <Table
             results={data}
-            title={"Planets"}
+            title={"Naves"}
             subNameKey={"model"}
             createdKey={"created"}
         ></Table>

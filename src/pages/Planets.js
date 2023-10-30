@@ -33,7 +33,7 @@ const Planets = () => {
     return (
         <Table
             results={data}
-            title={"Planets"}
+            title={"Planetas"}
             subNameKey={"terrain"}
             createdKey={"created"}
         ></Table>
