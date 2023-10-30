@@ -2,8 +2,6 @@ import React from 'react'
 import { Link } from "react-router-dom";
 
 
-import './home.css'
-
 const Home = () => {
     const options = [
         { title: "Personas", link: "/persons" },
@@ -13,7 +11,7 @@ const Home = () => {
 
     return (
         <aside className='h-screen w-screen flex items-center justify-center'>
-            <div className='card-container grid-cols-3 gap-2.5'>
+            <div className='grid grid-cols-3 gap-2.5'>
                 {options.map((option, idx) => (
                     <div
                         key={idx}

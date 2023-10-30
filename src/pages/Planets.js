@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 
+import Table from './components/Table'
+
+
 const Planets = () => {
     const [isLoading, setIsLoading] = useState(true)
 
@@ -28,14 +31,12 @@ const Planets = () => {
 
     if (isLoading) return <div>Loading..</div>
     return (
-        <aside className='h-screen w-screen'>
-            <h1>Planets:</h1>
-            <div>
-                {data.map((planet, idx) => (
-                    <p key={idx}>{planet.name}</p>
-                ))}
-            </div>
-        </aside>
+        <Table
+            results={data}
+            title={"Planets"}
+            subNameKey={"terrain"}
+            createdKey={"created"}
+        ></Table>
     )
 }
 
