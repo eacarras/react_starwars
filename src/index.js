@@ -7,7 +7,7 @@ import Home from './pages/Home'
 import Persons from './pages/Persons'
 import Planets from './pages/Planets'
 import NotFound from './pages/NotFound'
-import Startships from './pages/Startships'
+import Starships from './pages/Starships'
 
 import './index.css';
 import reportWebVitals from './reportWebVitals'
@@ -22,7 +22,7 @@ export default function App() {
           <Route index element={<Home />} />
           <Route path="persons" element={<Persons />} />
           <Route path="planets" element={<Planets />} />
-          <Route path="startships" element={<Startships />} />
+          <Route path="starships" element={<Starships />} />
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
