@@ -1,17 +1,38 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+import { BrowserRouter, Routes, Route } from "react-router-dom"
+
+// Import pages
+import Home from './pages/Home'
+import Persons from './pages/Persons'
+import Planets from './pages/Planets'
+import NotFound from './pages/NotFound'
+import Startships from './pages/Startships'
+
 import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import reportWebVitals from './reportWebVitals'
+
+
+// Main logic
+export default function App() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/">
+          <Route index element={<Home />} />
+          <Route path="persons" element={<Persons />} />
+          <Route path="planets" element={<Planets />} />
+          <Route path="startships" element={<Startships />} />
+          <Route path="*" element={<NotFound />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
+  )
+}
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
+root.render(<App />);
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+// Report vitals in console log for the moment
+// TODO: IMPROVE THIS SENDING A URL
+reportWebVitals(console.log)
