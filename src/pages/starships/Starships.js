@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 
-import Loading from "./components/Loading"
-import Table from './components/Table'
+import Loading from "../components/Loading"
+import Table from '../components/Table'
 
 
-const Persons = () => {
+const Starships = () => {
     const [isLoading, setIsLoading] = useState(true)
 
     const [data, setData] = useState({})
-    const [url, setURL] = useState("https://swapi.dev/api/people/")
+    const [url, setURL] = useState("https://swapi.dev/api/starships/")
     const [previousPage, setPreviousPage] = useState(null)
 
     // Functions
@@ -39,16 +39,16 @@ const Persons = () => {
     return (
         <Table
             results={data}
-            title={"Persons"}
-            subNameKey={"gender"}
+            title={"Starships"}
+            subNameKey={"model"}
             createdKey={"created"}
             haveNext={url !== null}
             havePrevious={previousPage !== null}
             next={() => makeRequest(url)}
             previous={() => makeRequest(previousPage)}
-            pathSeeMore={"/persons"}
+            pathSeeMore={"/startships"}
         ></Table>
     )
 }
 
-export default Persons
+export default Starships

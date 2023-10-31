@@ -2,10 +2,10 @@ import React, { useState, useEffect } from 'react'
 import { useLocation, NavLink, redirect } from "react-router-dom"
 
 import axios from "axios"
-import Loading from "./components/Loading"
-import CellCard from './components/CellCard'
+import Loading from "../components/Loading"
+import CellCard from '../components/CellCard'
 
-import { extractID } from '../utils/string'
+import { extractID } from '../../utils/string'
 
 
 const PlanetDetails = () => {
@@ -44,10 +44,10 @@ const PlanetDetails = () => {
     
     const src = `https://ui-avatars.com/api/?name=${planet.name.replace(" ", "+")}&rounded=true`
     return (
-        <aside className='p-12 px-44'>
+        <aside className='p-12 md:px:22 lg:px-44'>
             <NavLink className="pb-3 text-small font-bold" to="/persons">Back to Planets</NavLink>
-            <aside className='rounded-lg border flex flex-row mt-12 force-height-card'>
-                <div className='flex flex-col gap-5 justify-center items-center border-r-2 w-60'>
+            <aside className='rounded-lg border flex flex-col lg:flex-row lg:pt-0 pt-6 mt-12 lg:force-height-card items-center'>
+                <div className='flex flex-col gap-5 justify-center items-center force-height lg:border-r-2 w-60'>
                     <img src={src} alt="charactersName" />
                     <h1 className='text-2xl'>{planet.name}</h1>
                 </div>

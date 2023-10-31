@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 
-import Table from './components/Table'
-import Loading from "./components/Loading"
+import Table from '../components/Table'
+import Loading from "../components/Loading"
 
 
 const Planets = () => {

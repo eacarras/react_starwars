@@ -17,17 +17,37 @@ body {
 .force-height-card {
   height: 70vh;
 }
-.forcer-cel-width {
-  width: 40vw;
+@media (max-width: 1024px) {
+  .forcer-cel-width {
+    width: auto;
+  }
+  .force-height {
+    height: auto;
+  }
+  .list-values {
+    -moz-column-count: 3;
+    -moz-column-gap: 1.5em;
+    -webkit-column-count: 3;
+    -webkit-column-gap: 1.5em;
+  }
 }
+@media (min-width: 1024px) {
+  .forcer-cel-width {
+    width: 40vw;
+  }
+  .force-height {
+    height: 60vh;
+  }
+  .list-values {
+    -moz-column-count: 5;
+    -moz-column-gap: 1.5em;
+    -webkit-column-count: 5;
+    -webkit-column-gap: 1.5em;
+  }
+}
+
 a {
   text-decoration: underline;
-}
-.list-values {
-  -moz-column-count: 5;
-  -moz-column-gap: 1.5em;
-  -webkit-column-count: 5;
-  -webkit-column-gap: 1.5em;
 }
 
 code {

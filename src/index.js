@@ -6,14 +6,14 @@ import { BrowserRouter, Routes, Route } from "react-router-dom"
 import Home from './pages/Home'
 import NotFound from './pages/NotFound'
 
-import Persons from './pages/Persons'
-import PersonDetails from './pages/PersonDetails'
+import Persons from './pages/persons/Persons'
+import PersonDetails from './pages/persons/PersonDetails'
 
-import Planets from './pages/Planets'
-import PlanetDetails from './pages/PlanetDetails'
+import Planets from './pages/planets/Planets'
+import PlanetDetails from './pages/planets/PlanetDetails'
 
-import Starships from './pages/Starships'
-import StarshipDetails from './pages/StarshipDetails'
+import Starships from './pages/starships/Starships'
+import StarshipDetails from './pages/starships/StarshipDetails'
 
 import './index.css';
 import reportWebVitals from './reportWebVitals'
