@@ -11,9 +11,10 @@ const Planets = () => {
     const [url, setURL] = useState("https://swapi.dev/api/planets/")
     const [previousPage, setPreviousPage] = useState(null)
 
-    // Loading data
-    useEffect(() => {
-        axios.get(url)
+    // Functions
+    const makeRequest = (endpoint) => {
+        setIsLoading(true)
+        axios.get(endpoint)
             .then((e) => {
                 const { next, previous, results=[] } = e.data
                 if (next) {
@@ -27,6 +28,10 @@ const Planets = () => {
             })
             .catch((err) => console.error(err))
             .finally(() => setIsLoading(false))
+    }
+    // Loading data
+    useEffect(() => {
+        makeRequest(url)
     }, [])
 
     if (isLoading) return <div>Loading..</div>
@@ -36,6 +41,10 @@ const Planets = () => {
             title={"Planetas"}
             subNameKey={"terrain"}
             createdKey={"created"}
+            haveNext={url !== null}
+            havePrevious={previousPage !== null}
+            next={() => makeRequest(url)}
+            previous={() => makeRequest(previousPage)}
         ></Table>
     )
 }

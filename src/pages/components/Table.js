@@ -3,12 +3,12 @@ import { Link } from "react-router-dom";
 
 const DATE_OPTIONS = { year: 'numeric', month: 'long', day: 'numeric' };
 
-const Table = ({ title, results, subNameKey, createdKey, pathSeeMore }) => {
+const Table = ({ title, results, subNameKey, createdKey, pathSeeMore, havePrevious, haveNext, next, previous }) => {
 
     return (
-        <aside className='h-screen w-screen p-6 pt-0 px-44'>
+        <aside className='force-min-height w-screen p-6 pt-0 px-44'>
             <h1 className='text-2xl mt-7'>{ title }:</h1>
-            <div className='mt-14 grid gap-3'>
+            <div className='mt-14 grid gap-3 overflow-auto h-3/4'>
                 {results.map((data, idx) => {
                     const src = `https://ui-avatars.com/api/?name=${data.name.replace(" ", "+")}&rounded=true`
 
@@ -33,6 +33,29 @@ const Table = ({ title, results, subNameKey, createdKey, pathSeeMore }) => {
                     )
                 })}
             </div>
+            <aside className='flex h-20 pt-6'>
+                <span
+                    className={`flex-none font-bold ${havePrevious ? 'cursor-pointer' : 'cursor-not-allowed'}`}
+                    onClick={() => {
+                        if (havePrevious) {
+                            previous()
+                        }
+                    }}
+                >
+                        Anterior
+                </span>
+                <span className='flex-1'></span>
+                <span
+                    className={`flex-none font-bold ${haveNext ? 'cursor-pointer' : 'cursor-not-allowed'}`}
+                    onClick={() => {
+                        if (haveNext) {
+                            next()
+                        }
+                    }}
+                >
+                    Siguiente
+                </span>
+            </aside>
         </aside>
     )
 }
