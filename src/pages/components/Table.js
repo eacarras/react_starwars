@@ -1,5 +1,7 @@
 import React from 'react'
-import { Link } from "react-router-dom";
+import { Link } from "react-router-dom"
+
+import { extractID } from '../../utils/string'
 
 const DATE_OPTIONS = { year: 'numeric', month: 'long', day: 'numeric' };
 
@@ -28,7 +30,13 @@ const Table = ({ title, results, subNameKey, createdKey, pathSeeMore, havePrevio
                                 <p className='text-lg'>{createdAt.toLocaleDateString("en-US", DATE_OPTIONS)}</p>
                                 <p className='text-base'>Fecha de Creación</p>
                             </div>
-                            <Link className='flex-none pr-4' to={pathSeeMore}>Ver Más</Link>
+                            <Link
+                                className='flex-none pr-4'
+                                to={`${pathSeeMore}/${extractID(data.url)}`}
+                                state={{ chargeData: data }}
+                            >
+                                Ver Más
+                            </Link>
                         </div>
                     )
                 })}

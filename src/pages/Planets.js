@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 
 import Table from './components/Table'
+import Loading from "./components/Loading"
 
 
 const Planets = () => {
@@ -34,7 +35,7 @@ const Planets = () => {
         makeRequest(url)
     }, [])
 
-    if (isLoading) return <div>Loading..</div>
+    if (isLoading) return <Loading></Loading>
     return (
         <Table
             results={data}
@@ -45,6 +46,8 @@ const Planets = () => {
             havePrevious={previousPage !== null}
             next={() => makeRequest(url)}
             previous={() => makeRequest(previousPage)}
+            seeMore={(planets) => {}}
+            pathSeeMore={"/planets"}
         ></Table>
     )
 }

@@ -46,6 +46,7 @@ const Persons = () => {
             havePrevious={previousPage !== null}
             next={() => makeRequest(url)}
             previous={() => makeRequest(previousPage)}
+            pathSeeMore={"/persons"}
         ></Table>
     )
 }
