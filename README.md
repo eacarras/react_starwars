@@ -17,3 +17,12 @@ Another way is running in your machine you need to follow the next command
 npm i
 npm run start
 ```
+
+
+# TODO - LIST
+- [ ] Improve handle of error in inner details request
+- [ ] Modularize better the details page
+- [ ] Add unit test
+- [ ] Improve folder structur one page for each entity
+- [ ] Improve details UI to be more friendly
+- [ ] Improve texts in details pages to be more friendly

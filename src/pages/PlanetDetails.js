@@ -3,6 +3,8 @@ import { useLocation, NavLink, redirect } from "react-router-dom"
 
 import axios from "axios"
 import Loading from "./components/Loading"
+import CellCard from './components/CellCard'
+
 import { extractID } from '../utils/string'
 
 
@@ -22,9 +24,15 @@ const PlanetDetails = () => {
             setIsLoading(false)
         } else {
             const promises = planet.residents.map((residentURL) => axios.get(residentURL))
-            Promise.all(promises)
+            Promise.allSettled(promises)
                 .then((results) => {
-                    const mappedDate = results.map((e) => e.data)
+                    const mappedDate = results.reduce((acc, e) => {
+                        if (e.status === "fulfilled") {
+                            acc.push(e.value.data)
+                        }
+
+                        return acc
+                    }, [])
                     setResidents(mappedDate)
                 })
                 .catch((err) => console.error(err))
@@ -37,30 +45,35 @@ const PlanetDetails = () => {
     const src = `https://ui-avatars.com/api/?name=${planet.name.replace(" ", "+")}&rounded=true`
     return (
         <aside className='p-12 px-44'>
-            <NavLink className="pb-3" to="/planets">Back to Planets</NavLink>
-            <div className='flex gap-5 items-center border-b-2 py-3'>
-                <img src={src} alt="charactersName" />
-                <h1 className='text-2xl'>{planet.name} Details</h1>
-            </div>
-            <div className='flex flex-col gap-2 mt-3'>
-                <span>Rotation Period: {planet.rotation_period}</span>
-                <span>Climate: {planet.climate}</span>
-                <span>Gravity: {planet.gravity}</span>
-                <span>Terrain: {planet.terrain}</span>
-                <span>Population: {planet.population}</span>
-                <span>Diameter: {planet.diameter}</span>
-                <span>Surface Water: {planet.surface_water}</span>
-            </div>
-            <div className='flex flex-col gap-2 mt-3'>
-                <span>Residents:</span>
-                <ul className='list-disc pl-7'>
-                    {residents.map((e) => (
-                        <li key={e.name} className='cursor-pointer'>
-                            <NavLink to={{ pathname: `/persons/${extractID(e.url)}`}} state={{ chargeData: e }}>{e.name}</NavLink>
-                        </li>
-                    ))}
-                </ul>
-            </div>
+            <NavLink className="pb-3 text-small font-bold" to="/persons">Back to Planets</NavLink>
+            <aside className='rounded-lg border flex flex-row mt-12 force-height-card'>
+                <div className='flex flex-col gap-5 justify-center items-center border-r-2 w-60'>
+                    <img src={src} alt="charactersName" />
+                    <h1 className='text-2xl'>{planet.name}</h1>
+                </div>
+                <div className='flex flex-col gap-2 m-12'>
+                    <span className='text-xl font-bold'>Details of Planet</span>
+                    <div className='grid grid-cols-2 forcer-cel-width gap-x-12 gap-y-5'>
+                        <CellCard title={"Rotation Period"} subtitle={planet.rotation_period} />
+                        <CellCard title={"Climate"} subtitle={planet.climate} />
+                        <CellCard title={"Gravity"} subtitle={planet.gravity} />
+                        <CellCard title={"Terrain"} subtitle={planet.terrain} />
+                        <CellCard title={"Population"} subtitle={planet.population}  />
+                        <CellCard title={"Diameter"} subtitle={planet.diameter} />
+                        <CellCard title={"Surface Water"} subtitle={planet.surface_water} />
+                    </div>
+                    <div className='flex flex-col gap-2 mt-3'>
+                        <span className='text-xl font-bold'>Residents:</span>
+                        <ul className='list-disc list-values pl-7'>
+                            {residents.map((e) => (
+                                <li key={e.name} className='cursor-pointer'>
+                                    <NavLink to={{ pathname: `/persons/${extractID(e.url)}`}} state={{ chargeData: e }}>{e.name}</NavLink>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                </div>
+            </aside>
         </aside>
     )
 }

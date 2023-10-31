@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 
+import Loading from "./components/Loading"
 import Table from './components/Table'
 
 
@@ -34,7 +35,7 @@ const Starships = () => {
         makeRequest(url)
     }, [])
 
-    if (isLoading) return <div>Loading..</div>
+    if (isLoading) return <Loading></Loading>
     return (
         <Table
             results={data}
