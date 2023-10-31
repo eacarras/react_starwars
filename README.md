@@ -19,7 +19,7 @@ npm run start
 ```
 
 
-# TODO - LIST
+# TODO - LIST (What we do if we have more than one day?)
 - [ ] Improve handle of error in inner details request
 - [ ] Modularize better the details page
 - [ ] Add unit test

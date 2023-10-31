@@ -8,7 +8,7 @@ const DATE_OPTIONS = { year: 'numeric', month: 'long', day: 'numeric' };
 const Table = ({ title, results, subNameKey, createdKey, pathSeeMore, havePrevious, haveNext, next, previous }) => {
 
     return (
-        <aside className='force-min-height w-screen p-6 pt-0 px-44'>
+        <aside className='force-min-height w-screen p-6 pt-0 lg:px-44'>
             <h1 className='text-2xl mt-7'>{ title }:</h1>
             <div className='mt-14 grid gap-3 overflow-auto h-3/4'>
                 {results.map((data, idx) => {
@@ -22,11 +22,11 @@ const Table = ({ title, results, subNameKey, createdKey, pathSeeMore, havePrevio
                     return (
                         <div key={idx} className='flex rounded-lg border p-1.5 items-center'>
                             <img className='flex-none h-9 w-9' alt="character" src={src} />
-                            <div className='flex-none pl-4 w-80'>
+                            <div className='flex-none pl-4 w-52 md:w-80'>
                                 <p className='text-lg'>{data.name}</p>
                                 <p className='text-base'>{subtitle}</p>
                             </div>
-                            <div className='flex-1 w-60'>
+                            <div className='w-60 hidden md:block lg:flex-1'>
                                 <p className='text-lg'>{createdAt.toLocaleDateString("en-US", DATE_OPTIONS)}</p>
                                 <p className='text-base'>Fecha de Creación</p>
                             </div>

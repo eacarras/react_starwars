@@ -16,7 +16,7 @@ const Home = () => {
 
     return (
         <aside className='h-screen w-screen flex items-center justify-center'>
-            <div className='grid grid-cols-3 gap-7'>
+            <div className='flex md:flex-col lg:flex-row gap-7'>
                 {options.map((option, idx) => (
                     <div
                         key={option.title}
