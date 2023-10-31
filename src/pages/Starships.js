@@ -38,7 +38,7 @@ const Starships = () => {
     return (
         <Table
             results={data}
-            title={"Naves"}
+            title={"Starships"}
             subNameKey={"model"}
             createdKey={"created"}
             haveNext={url !== null}

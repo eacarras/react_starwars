@@ -39,7 +39,7 @@ const Planets = () => {
     return (
         <Table
             results={data}
-            title={"Planetas"}
+            title={"Planets"}
             subNameKey={"terrain"}
             createdKey={"created"}
             haveNext={url !== null}

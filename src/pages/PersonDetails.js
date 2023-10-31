@@ -37,7 +37,8 @@ const PersonDetails = () => {
     const src = `https://ui-avatars.com/api/?name=${person.name.replace(" ", "+")}&rounded=true`
     return (
         <aside className='p-12 px-44'>
-            <div className='flex gap-5 items-center border-b-2 pb-3'>
+            <NavLink className="pb-3" to="/persons">Back to Persons</NavLink>
+            <div className='flex gap-5 items-center border-b-2 py-3'>
                 <img src={src} alt="charactersName" />
                 <h1 className='text-2xl'>{person.name} Details</h1>
             </div>

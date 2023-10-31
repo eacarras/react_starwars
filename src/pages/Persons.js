@@ -39,7 +39,7 @@ const Persons = () => {
     return (
         <Table
             results={data}
-            title={"Personas"}
+            title={"Persons"}
             subNameKey={"gender"}
             createdKey={"created"}
             haveNext={url !== null}
