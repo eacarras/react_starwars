@@ -25,6 +25,7 @@ npm run start
 - [ ] Add unit test
 - [x] Improve folder structure one page for each entity
 - [ ] Improve details UI to be more friendly
+- [ ] Improve search by name to use the backend instead of the frontend
 - [ ] Improve texts in details pages to be more friendly
 - [ ] Improve responsive design some points could be: Other way of select categories with a nav bar
 - [ ] Improve responsive design some points could be: Main table could have better UX

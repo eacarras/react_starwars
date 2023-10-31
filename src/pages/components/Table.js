@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from "react-router-dom"
 
 import { extractID } from '../../utils/string'
@@ -6,12 +6,44 @@ import { extractID } from '../../utils/string'
 const DATE_OPTIONS = { year: 'numeric', month: 'long', day: 'numeric' };
 
 const Table = ({ title, results, subNameKey, createdKey, pathSeeMore, havePrevious, haveNext, next, previous }) => {
+    const [inputValue, setInputValue] = useState("")
+    const [filteredResults, setFilteredResults] = useState(results)
+
+    const pageSearch = () => {
+        if (inputValue && inputValue.length >= 1) {
+            const filters = results.filter((e) => e.name.toLowerCase().includes(inputValue.toLocaleLowerCase()))
+            setFilteredResults(filters)
+        } else {
+            setFilteredResults(results)
+        }
+    }
 
     return (
         <aside className='force-min-height w-screen p-6 pt-0 lg:px-44'>
             <h1 className='text-2xl mt-7'>{ title }:</h1>
-            <div className='mt-14 grid gap-3 overflow-auto h-3/4'>
-                {results.map((data, idx) => {
+            <div className='flex flex-row mt-14 gap-2'>
+                <input
+                    className='w-44 h-10 border rounded-md p-2'
+                    value={inputValue}
+                    onChange={(e) => setInputValue(e.target.value)}
+                    onKeyDown={(e) => {
+                        if (e.key === 'Enter') {
+                            pageSearch()
+                        }
+                    }} />
+                { inputValue && inputValue.length && (
+                    <button 
+                        className='h-10 w-28 bg-cyan-600 rounded-md border'
+                        onClick={() => {
+                            setInputValue("")
+                            setFilteredResults(results)
+                        }}
+                    >RESET</button>
+                )}
+            </div>
+            
+            <div className='grid gap-3 mt-2 overflow-auto h-3/4'>
+                {filteredResults.map((data, idx) => {
                     const src = `https://ui-avatars.com/api/?name=${data.name.replace(" ", "+")}&rounded=true`
 
                     const str = data[subNameKey]
@@ -41,7 +73,7 @@ const Table = ({ title, results, subNameKey, createdKey, pathSeeMore, havePrevio
                     )
                 })}
             </div>
-            <aside className='flex h-20 pt-6'>
+            <aside className='flex h-16 pt-6'>
                 <span
                     className={`flex-none font-bold ${havePrevious ? 'cursor-pointer' : 'cursor-not-allowed'}`}
                     onClick={() => {
