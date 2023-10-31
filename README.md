@@ -9,6 +9,7 @@ This is a project created with create-react-app and dockerized to help to other 
 # How to run locally ?
 The more easy way is using docker, you just need to run this command
 ```
+npm i
 docker compose up
 ```
 
@@ -18,6 +19,7 @@ npm i
 npm run start
 ```
 
+RECOMMENDED: The second option if you not have docker in your machine
 
 # TODO - LIST (What we do if we have more than one day?)
 - [ ] Improve handle of error in inner details request
